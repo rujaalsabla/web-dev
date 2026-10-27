@@ -1,0 +1,223 @@
+
+:root {
+  color-scheme: light;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --accent: #0f766e;
+  --bg: #f1f5fb;
+  --card-bg: #ffffff;
+  --text: #172033;
+  --muted: #64748b;
+  --border: #dbe3ef;
+  --error: #b91c1c;
+  --success: #15803d;
+  --radius: 16px;
+  --shadow: 0 12px 32px rgba(30, 41, 59, 0.09);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(99, 102, 241, 0.09), transparent 42rem),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Header: gradient + flexbox ---- */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(120deg, #1e3a8a 0%, #4338ca 58%, #6d28d9 100%);
+  color: #fff;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand { display: flex; align-items: center; gap: 0.6rem; }
+.brand h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; }
+.logo {
+  display: inline-grid;
+  place-items: center;
+  width: 38px; height: 38px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
+.theme-btn:active { transform: scale(0.96); }
+.theme-btn:focus-visible, .submit-btn:focus-visible, .member-item .remove:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 3px;
+}
+
+/* ---- Layout: two cards side by side (CSS Grid) ---- */
+.container {
+  width: min(1100px, 92%);
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ---- Card ---- */
+.card {
+  background: var(--card-bg);
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease;
+}
+.card h2 { font-size: 1.25rem; margin-bottom: 0.2rem; }
+.subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.3rem; }
+
+/* ---- Two-column field grid inside the form ---- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.2rem;
+}
+
+.field { margin-bottom: 1rem; display: flex; flex-direction: column; }
+.field label { font-weight: 500; font-size: 0.88rem; margin-bottom: 0.35rem; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.8; }
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+textarea { resize: vertical; }
+
+/* ---- Submit button ---- */
+.submit-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.submit-btn:hover { background: var(--primary-dark); }
+.submit-btn:active { transform: translateY(1px); }
+
+/* ---- Status messages ---- */
+.error { color: var(--error); font-size: 0.78rem; margin-top: 0.25rem; min-height: 0.9rem; }
+.success {
+  margin-top: 1rem; padding: 0.8rem 1rem;
+  background: rgba(21, 128, 61, 0.1);
+  color: var(--success);
+  border-radius: 10px; font-weight: 600; text-align: center;
+}
+.hidden { display: none; }
+
+/* Highlight an invalid field */
+input.invalid, select.invalid, textarea.invalid {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+/* ---- Member list ---- */
+.member-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.member-list .empty { color: var(--muted); font-size: 0.9rem; padding: 0.5rem 0; }
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.member-item .info strong { display: block; font-size: 0.95rem; }
+.member-item .info span { font-size: 0.8rem; color: var(--muted); }
+.member-item .remove {
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.member-item .remove:hover { background: var(--error); color: #fff; }
+
+/* ---- Footer ---- */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---- Dark theme: JS adds class 'dark' to <body> ---- */
+body.dark {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --muted: #a8b3c5;
+  --border: #334155;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --error: #f87171;
+  --success: #4ade80;
+  --shadow: 0 14px 36px rgba(2, 6, 23, 0.28);
+}
+body.dark .site-header {
+  background: linear-gradient(120deg, #111827 0%, #312e81 58%, #4c1d95 100%);
+}
+body.dark .success { background: rgba(74, 222, 128, 0.12); }
+
+/* ---- Responsive: stack to one column on small screens ---- */
+@media (max-width: 860px) {
+  .container { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .site-header { padding: 1rem; }
+}

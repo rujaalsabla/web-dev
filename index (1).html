@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDev-Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="logo">&lt;/&gt;</span>
+            <h1>WebDev</h1>
+        </div>
+        <button id="theme" class="theme-btn" type="button" aria-pressed="false">Dark Mode</button>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Register a new member</h2>
+            <p class="subtitle">Join the WebDev club community.</p>
+
+            <form id="regform" novalidate>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="e.g Njoki Victor" autocomplete="name" required>
+                        <small class="error" id="nameError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="e.g mugo@students.kyu.ac.ke" autocomplete="email" required>
+                        <small class="error" id="emailError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password" required>
+                        <small class="error" id="passwordError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Re-enter your password" autocomplete="new-password" required>
+                        <small class="error" id="confirmError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="gender">Gender</label>
+                        <select id="gender" required>
+                            <option value="">-- Select --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="error" id="genderError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" required>
+                        <small class="error" id="dobError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" placeholder="e.g Kenya" autocomplete="country-name" required>
+                        <small class="error" id="countryError"></small>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="e.g +254 700 000 000" autocomplete="tel" required>
+                        <small class="error" id="phoneError"></small>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                    <small class="error" id="bioError"></small>
+                </div>
+
+                <button type="submit" class="submit-btn">Register</button>
+                <p id="successMsg" class="success hidden" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Registered Members (<span id="count">0</span>)</h2>
+            <p class="subtitle">New sign-ups appear here instantly.</p>
+            <ul id="memberList" class="member-list">
+                <li class="empty" id="emptyNote">No members yet. Register someone to begin.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 WebDev: SPI 2201 Web Application Development, Kirinyaga University.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
